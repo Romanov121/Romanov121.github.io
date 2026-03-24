@@ -1,8 +1,9 @@
-/* Шрифт Roboto Slab*/
+/* --- Roboto Slab Fonts --- */
+/* Переконайтеся, що файли шрифтів лежать у папці "fonts" у корені проекту */
 @font-face {
     font-family: 'Roboto Slab';
-    src: url('RobotoSlab-SemiBold.woff2') format('woff2'),
-        url('RobotoSlab-SemiBold.woff') format('woff');
+    src: url('../fonts/RobotoSlab-SemiBold.woff2') format('woff2'),
+         url('../fonts/RobotoSlab-SemiBold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -10,34 +11,192 @@
 
 @font-face {
     font-family: 'Roboto Slab';
-    src: url('RobotoSlab-Regular.woff2') format('woff2'),
-        url('RobotoSlab-Regular.woff') format('woff');
+    src: url('../fonts/RobotoSlab-Regular.woff2') format('woff2'),
+         url('../fonts/RobotoSlab-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
-
-
+/* --- Global Variables & Basics --- */
 :root {
     --main-green: #70b34d;
     --dark-teal: #263e43;
-    --footer-dark: #1e2f33;
-    --text-brown: #5c4731;
-    --bg-grey: #e9ecef;
+    --accent-red: #EB5757;
+    --bg-cream: #FCF0F0;
+    --text-dark: #3b5358;
 }
 
-body { font-family: 'Roboto Slab', serif; color: #333; }
+body { 
+    font-family: 'Roboto Slab', serif; 
+    color: #333; 
+    margin: 0;
+}
 
-.title-underline::after {
-    content: '';
+/* --- Хедер (Завжди білий) --- */
+.site-header {
+    background-color: #ffffff;
+}
+
+/* --- Контентна область --- */
+
+/* Банер (Розташовується перед кремовою областю) */
+.tomato-hero {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Загальна обгортка для всього контенту під банером */
+.tomato-content-wrapper {
+    background-color: var(--bg-cream);
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+/* Заголовок та іконка Union */
+.tomato-page-title {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.union-img {
+    width: 55px;
+    height: auto;
+    margin-bottom: 30px;
     display: block;
-    width: 60px;
-    height: 2px;
-    background: var(--main-green);
+}
+
+/* Опис та акцентні лінії */
+.tomato-description {
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.accent-line-box {
+    border-left: 4px solid var(--accent-red);
+    padding-left: 20px;
+    margin: 30px 0;
+}
+
+.accent-line-box p {
+    margin-bottom: 0;
+}
+
+/* Секція з 3-ма програмами (Білий блок) */
+.breeding-programs-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.program-col h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    min-height: 3.5rem; /* Вирівнювання заголовків */
+}
+
+.program-col hr {
+    border-top: 1px solid var(--text-dark);
     margin: 15px 0;
 }
 
-.title-underline.mx-auto::after { margin: 15px auto; }
+.program-col p {
+    font-size: 0.95rem;
+    color: #4f4f4f;
+    line-height: 1.6;
+}
 
-.line-sm { width: 40px; height: 1px; background: #ccc; margin: 10px 0; }
+/* Червона лінія перед дистриб'юторами */
+.distributor-box {
+    display: flex;
+    align-items: center;
+}
+
+.red-vertical-divider {
+    width: 4px;
+    height: 39px;
+    background-color: var(--accent-red);
+    margin-right: 15px;
+}
+
+.distributor-text {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* --- Сітка карток (Products) --- */
+.product-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.03);
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 20px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+}
+
+.product-card img {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    color: var(--main-green);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.product-desc {
+    color: var(--main-green);
+    font-size: 0.8rem;
+    margin-top: auto; 
+}
+
+/* --- Footer Socials --- */
+.footer-socials {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-socials .social-item {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.footer-socials .social-item:hover {
+    opacity: 0.8;
+}
+
+.footer-socials .social-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
