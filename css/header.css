@@ -1,12 +1,94 @@
-.site-header { padding: 20px 0; background: transparent; }
-
-.search-box { border-bottom: 1px solid #333; display: flex; }
-.search-box input { border: none; background: transparent; outline: none; font-size: 14px; }
-.search-box button { border: none; background: transparent; }
-
-.main-nav .nav-link { 
-    color: var(--dark-teal); 
-    font-weight: 700; 
-    transition: 0.3s; 
+/* Базові стилі хедера */
+.site-header {
+    width: 100%;
+    padding: 15px 0;
+    font-family: 'Roboto Slab', serif;
+    z-index: 100;
 }
-.main-nav .nav-link:hover { color: var(--main-green); }
+
+.header-transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+/* БІЛИЙ ХЕДЕР (Для сторінки товарів) */
+.header-white {
+    position: relative;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-logo {
+    width: 160px;
+    height: auto;
+}
+
+/* Блок пошуку */
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #384e51;
+    padding-bottom: 2px;
+    width: 200px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 2px 5px;
+    width: 100%;
+    background: transparent;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-box img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Навігація */
+.main-nav ul {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav .nav-link {
+    color: #384e51 !important;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 15px !important;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.main-nav .nav-link:hover, 
+.main-nav .nav-link.active {
+    color: #5f9f52 !important; 
+    text-decoration: none;
+}

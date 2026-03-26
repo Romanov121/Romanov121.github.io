@@ -1,12 +1,42 @@
+/* --- ГЛОБАЛЬНІ НАЛАШТУВАННЯ --- */
+:root {
+    --main-green: #70b34d;
+    --dark-teal: #263e43;
+    --accent-red: #EB5757;
+    --bg-cream: #FCF0F0;
+    --text-dark: #3b5358;
+}
+
+body { 
+    font-family: 'Roboto Slab', serif; 
+    color: #333; 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; 
+}
+
+/* --- ГОЛОВНА СТОРІНКА (Банер) --- */
 .hero-wrapper { 
+    position: relative; 
     background-size: cover; 
     background-position: center; 
     min-height: 550px; 
-    color: var(--text-brown);
+    color: var(--text-dark);
 }
 
-.hero-content { padding-top: 120px; }
-.hero-content h1 { font-size: 44px; font-weight: 700; }
+.hero-content { 
+    padding-top: 150px;
+}
+
+.hero-content h1 { 
+    font-size: 44px; 
+    font-weight: 700; 
+}
 
 .btn-main { 
     background: var(--main-green); 
@@ -15,21 +45,11 @@
     font-weight: 700; 
     display: inline-block;
     margin-top: 20px;
+    text-decoration: none;
 }
 
-.vision-mission-sec { 
-    background: var(--bg-grey) url('../images/Union.svg') no-repeat center;
-    background-size: cover;
+.btn-main:hover {
+    background: #5f9f52;
+    color: white;
+    text-decoration: none;
 }
-
-.video-box { position: relative; cursor: pointer; display: inline-block; }
-.play-btn { 
-    position: absolute; 
-    top: 50%; left: 50%; 
-    transform: translate(-50%, -50%); 
-    width: 65px; 
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-}
-.video-box:hover .play-btn { transform: translate(-50%, -50%) scale(1.15); }
-
-.act-img { height: 75px; object-fit: contain; }

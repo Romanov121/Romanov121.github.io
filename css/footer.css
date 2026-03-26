@@ -1,29 +1,78 @@
-.site-footer { background: var(--dark-teal); color: white; }
+.site-footer {
+    background-color: #384e51; /* Темний колір з макету */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin-top: auto; /* Притискає футер до низу */
+}
 
-.footer-main { border-bottom: 1px solid rgba(255,255,255,0.1); }
+/* Верхня частина футера */
+.footer-main {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-.footer-links a { 
-    color: #aebdbf; 
-    font-size: 13px; 
-    font-weight: 700; 
-    margin-right: 20px; 
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.footer-links a:hover {
+    opacity: 0.7;
     text-decoration: none;
 }
-.footer-links a:hover { color: white; }
 
-.social-item { 
-    width: 36px; height: 36px; 
-    border: 2px solid var(--main-green); 
-    border-radius: 50%; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    margin-left: 10px; 
-    transition: 0.3s;
-    color: var(--main-green);
-    text-decoration: none !important;
+.footer-socials {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.social-item:hover { background: var(--main-green); color: var(--dark-teal); }
+.social-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #5f9f52; 
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    background: transparent;
+    text-decoration: none;
+}
 
-.footer-copyright { background: var(--footer-dark); color: #8c9fa1; font-size: 11px; }
+.social-item:hover {
+    transform: scale(1.1);
+    background-color: #5f9f52;
+    opacity: 1;
+}
+
+.social-item img {
+    width: 16px;
+    height: auto;
+    display: block;
+}
+
+/* Копірайт */
+.footer-copyright {
+    font-size: 11px;
+    opacity: 0.6;
+    padding: 15px 0;
+}

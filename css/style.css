@@ -1,5 +1,4 @@
-/* --- Roboto Slab Fonts --- */
-/* Переконайтеся, що файли шрифтів лежать у папці "fonts" у корені проекту */
+/* --- ГЛОБАЛЬНІ НАЛАШТУВАННЯ ТА ШРИФТИ --- */
 @font-face {
     font-family: 'Roboto Slab';
     src: url('../fonts/RobotoSlab-SemiBold.woff2') format('woff2'),
@@ -18,29 +17,34 @@
     font-display: swap;
 }
 
-/* --- Global Variables & Basics --- */
 :root {
     --main-green: #70b34d;
-    --dark-teal: #263e43;
+    --dark-teal: #384e51;
     --accent-red: #EB5757;
     --bg-cream: #FCF0F0;
     --text-dark: #3b5358;
+    --line-green: #5f9f52;
+    --product-green: #5E9C54;
 }
 
 body { 
     font-family: 'Roboto Slab', serif; 
     color: #333; 
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff; /* Базовий фон */
 }
 
-/* --- Хедер (Завжди білий) --- */
-.site-header {
-    background-color: #ffffff;
+main {
+    flex: 1; 
 }
 
-/* --- Контентна область --- */
+/* =========================================================
+   СТОРІНКА СПИСКУ ТОВАРІВ (Tomato Hybrids) 
+   ========================================================= */
 
-/* Банер (Розташовується перед кремовою областю) */
 .tomato-hero {
     width: 100%;
     height: 350px;
@@ -49,7 +53,7 @@ body {
     background-repeat: no-repeat;
 }
 
-/* Загальна обгортка для всього контенту під банером */
+/* Рожева зона опису */
 .tomato-content-wrapper {
     background-color: var(--bg-cream);
     width: 100%;
@@ -57,7 +61,14 @@ body {
     padding-bottom: 60px;
 }
 
-/* Заголовок та іконка Union */
+/* Біла зона для товарів */
+.full-white-section {
+    background-color: #ffffff;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
 .tomato-page-title {
     color: var(--text-dark);
     font-weight: 700;
@@ -72,7 +83,6 @@ body {
     display: block;
 }
 
-/* Опис та акцентні лінії */
 .tomato-description {
     color: var(--text-dark);
     font-size: 1.05rem;
@@ -89,7 +99,7 @@ body {
     margin-bottom: 0;
 }
 
-/* Секція з 3-ма програмами (Білий блок) */
+/* Білі картки програм селекції */
 .breeding-programs-container {
     background-color: #ffffff;
     padding: 40px;
@@ -101,7 +111,7 @@ body {
     font-size: 1.2rem;
     color: var(--text-dark);
     font-weight: 700;
-    min-height: 3.5rem; /* Вирівнювання заголовків */
+    min-height: 3.5rem;
 }
 
 .program-col hr {
@@ -115,7 +125,7 @@ body {
     line-height: 1.6;
 }
 
-/* Червона лінія перед дистриб'юторами */
+/* Дистриб'ютори */
 .distributor-box {
     display: flex;
     align-items: center;
@@ -130,24 +140,18 @@ body {
 
 .distributor-text {
     color: var(--text-dark);
-    font-weight: 700;
     font-size: 1.2rem;
     margin: 0;
     line-height: 1.2;
 }
 
-/* --- Сітка карток (Products) --- */
+/* --- СІТКА ТА КАРТКИ ТОВАРІВ --- */
 .product-card {
     background: #ffffff;
     border: 1px solid rgba(0,0,0,0.03);
     border-radius: 4px;
-    transition: transform 0.2s, box-shadow 0.2s;
     padding: 20px;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card img {
@@ -155,48 +159,181 @@ body {
     max-height: 180px;
     object-fit: contain;
     margin-bottom: 15px;
+    transition: transform 0.5s ease;
 }
 
+/* Налаштування кольору для опису та назви (Зелений) */
 .product-name {
-    color: var(--main-green);
+    color: var(--product-green) !important;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
     margin-bottom: 5px;
 }
 
 .product-desc {
-    color: var(--main-green);
-    font-size: 0.8rem;
+    color: var(--product-green) !important;
+    opacity: 1 !important;
+    font-weight: 500;
+    font-size: 0.85rem;
     margin-top: auto; 
 }
 
-/* --- Footer Socials --- */
-.footer-socials {
+/* Інтерактивність посилання на картці */
+.product-card-link {
+    text-decoration: none !important;
+    display: block;
+    color: inherit;
+}
+
+.product-card-link:hover .product-card {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+.product-card-link:hover img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   СТОРІНКА ОДНОГО ТОВАРУ (Tomato One Page)
+   ========================================================= */
+
+.product-one-page .main-content-area {
+    background-color: #F7F7F7;
+    background-image: url('../images/Union tomato.png');
+    background-repeat: no-repeat;
+    background-position: calc(50% + 200px) center; 
+    background-size: 60%;
+    padding: 60px 0;
+    min-height: 80vh;
+}
+
+.main-container {
+    max-width: 1140px;
+}
+
+.back-link {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.footer-socials .social-item {
-    display: block;
-    width: 32px;
-    height: 32px;
-    border: none;
-    background: transparent;
+    color: var(--line-green);
     text-decoration: none;
-    transition: opacity 0.2s;
+    font-size: 14px;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
-.footer-socials .social-item:hover {
-    opacity: 0.8;
+.back-link:hover {
+    color: #4a7b42;
+    text-decoration: none;
 }
 
-.footer-socials .social-item img {
+.back-link img { width: 25px; }
+
+.id-title { color: var(--text-dark); font-size: 38px; margin: 0; font-weight: 700; }
+.main-name { color: var(--line-green); font-size: 32px; margin: 10px 0; font-weight: 400; }
+
+.divider-img { margin: 20px 0 30px; }
+
+.promo-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ce282c;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.char-header {
+    color: var(--line-green);
+    border-bottom: 2px solid var(--line-green);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.resistance-block {
+    margin: 20px 0 30px;
+    color: var(--text-dark);
+}
+
+.line-header {
+    color: var(--line-green);
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    background-image: url('../images/Line 3.svg');
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100% 3px;
+    font-weight: 400;
+}
+
+/* Списки з зеленими крапками */
+.dotted-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dotted-list li {
+    position: relative;
+    padding-left: 15px; 
+    margin-bottom: 6px; 
+    color: var(--text-dark);
+    font-size: 13.5px;
+    line-height: 1.3;
+}
+
+.dotted-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px; 
+    width: 6px;
+    height: 6px;
+    background-image: url('../images/Ellipse 2.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
     display: block;
-    width: 100%;
-    height: 100%;
 }
+
+.color-text {
+    color: var(--text-dark);
+    font-size: 15px;
+    padding-left: 0;
+}
+
+.image-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.main-photo-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.product-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.pdf-wrapper { margin-top: 30px; }
+
+.pdf-btn-xl {
+    width: 250px; 
+    height: auto;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pdf-btn-xl:hover { transform: scale(1.03); }
