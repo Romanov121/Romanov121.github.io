@@ -281,10 +281,10 @@ main {
 
 .dotted-list li {
     position: relative;
-    padding-left: 15px; 
+    padding-left: 0px; 
     margin-bottom: 6px; 
     color: var(--text-dark);
-    font-size: 13.5px;
+    font-size: 15px;
     line-height: 1.3;
 }
 
