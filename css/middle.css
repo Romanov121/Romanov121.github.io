@@ -184,3 +184,50 @@ main {
     color: #639c54;
     text-decoration: none;
 }
+.search-box button, 
+.search-box .btn,
+.input-group-append .btn {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 5px !important;
+}
+
+.custom-video {
+    position: relative;
+    display: inline-block; 
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.custom-video:hover {
+    transform: scale(1.02);
+}
+
+.custom-video .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; 
+    height: auto;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.custom-video:hover .play-btn {
+    opacity: 0.8;
+}
+
+
+.custom-video::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #F4F4F4(0, 0, 0, 0.1); 
+    transition: background 0.3s;
+}
+

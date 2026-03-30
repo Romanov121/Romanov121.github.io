@@ -273,7 +273,6 @@ main {
     font-weight: 400;
 }
 
-/* Списки з зеленими крапками */
 .dotted-list {
     list-style: none;
     padding: 0;
@@ -339,8 +338,92 @@ main {
 .pdf-btn-xl:hover { transform: scale(1.03); }
 .address-dots {
     display: block;
-    width: 500px;       /* Встановлюємо ширину як на макеті */
-    height: 1px;      /* Важливо! Прибираємо 4px, щоб лінія не була товстою */
-    margin: 10px auto 20px auto; /* Центруємо лінію під заголовком */
-    opacity: 0.8;      /* Додаємо легку прозорість для м'якості, якщо потрібно */
+    width: 500px;     
+    height: 1px;    
+    margin: 10px auto 20px auto; 
+    opacity: 0.8;     
+}
+
+@media (max-width: 991px) {
+    .site-header.header-index .navbar-collapse {
+        background-color: transparent !important; 
+        box-shadow: none !important; 
+        margin-top: 0 !important;
+    }
+    
+    .site-header.header-index .main-nav-list .nav-link {
+        color: #ffffff !important; 
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
+    }
+}
+.hero-wrapper {
+    background-image: url('../images/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 80vh; 
+}
+/* --- ВИПРАВЛЕННЯ ДЛЯ ПК --- */
+@media (min-width: 992px) {
+  
+    .navbar {
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+    }
+
+    /* Приховуємо мобільний пошук, якщо він був дубльований */
+    .mobile-search-box {
+        display: none !important;
+    }
+
+    /* Позиціювання тексту Hero по центру екрану */
+    .hero-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;     
+        text-align: center;
+        min-height: 80vh;
+    }
+
+    .hero-content {
+        padding-top: 0 !important;
+        margin: auto 0;           
+    }
+
+    .hero-content h1 {
+        font-size: 56px;
+        max-width: 800px;
+        margin-bottom: 30px;
+    }
+}
+
+/* --- ЗАГАЛЬНІ ВИПРАВЛЕННЯ ДЕФЕКТІВ --- */
+.hero-content h1 {
+    color: #3b5358; 
+    font-weight: 700;
+}
+
+.btn-main {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+@media (max-width: 991px) {
+    .header-search.d-lg-none {
+        position: relative;
+        border-bottom: 1px solid #4a5a64; 
+    }
+    
+    .header-search.d-lg-none input {
+        border: none;
+        padding: 5px 0;
+        font-size: 16px;
+        outline: none;
+        width: 100%;
+    }
+
+    .nav-link-custom {
+        font-size: 18px !important;
+        padding: 12px !important;
+    }
 }

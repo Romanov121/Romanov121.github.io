@@ -94,3 +94,30 @@
     color: #5f9f52 !important; 
     text-decoration: none;
 }
+.nav-link-custom {
+    font-size: 20px !important; 
+    font-weight: 600; 
+    color: #4a5a64 !important; 
+    padding: 5px 15px !important;
+    transition: 0.3s;
+}
+
+.header-search {
+    border-bottom: 1px solid #4a5a64;
+    padding-bottom: 2px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.header-search input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #4a5a64;
+}
+
+.main-nav-list {
+    margin: 0;
+    padding: 0;
+}
