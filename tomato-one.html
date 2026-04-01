@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/main.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomato TAG 1002 - Agridera Seeds & Agriculture</title>
@@ -47,78 +49,93 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <main class="main-content-area">
-        <div class="container main-container">
+    <main class="main-content-area" id="article">
+        <div class="container main-container" v-if="currentProduct">
             <div class="row">
                 <div class="col-md-7 info-side">
                     <a href="tomato.html" class="back-link">
                         <img src="images/Arrow-1.svg" alt="Back">
-                        Return to all tomatoes
+                        Return to all peppers
                     </a>
 
-                    <h1 class="id-title">TAG 1002 (TAG 809)</h1>
-                    <h2 class="main-name">Tomato Determinate<br>Red Standard Round</h2>
+                    <h1 class="id-title">{{ currentProduct.title }}</h1>
+                    <h2 class="main-name" v-html="currentProduct.main_name"></h2>
                     
                     <img src="images/Union.png" alt="Divider" class="divider-img">
 
                     <div class="promo-block">
                         <img src="images/Group-17.png" alt="Tomato">
-                        <p>Very high yield and<br>excellent fruits quality!</p>
+                        <p v-html="currentProduct.yield_text"></p>
                     </div>
 
                     <h3 class="char-header">CHARACTERISTICS</h3>
 
                     <div class="resistance-block">
                         <p><strong>Resistance</strong></p>
-                        <p>HR: ToMV:0-2; Fol: 1,2; Ve/Vd;<br>IR: TYLCV</p>
+                        <p>{{ currentProduct.resistance }}</p>
                     </div>
 
                     <div class="grid-details row">
-    <div class="col-6">
-        <h4 class="line-header">Plant</h4>
-        <ul class="dotted-list list-unstyled">
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Strong vigor that provides good leaf coverage.</li>
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Very high productivity with good fruit setting.</li>
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Early matured variety.</li>
-        </ul>
-    </div>
+                        <div class="col-6">
+                            <h4 class="line-header">Plant</h4>
+                            <ul class="dotted-list list-unstyled">
+                                <li v-for="item in currentProduct.plant" :key="item">
+                                    <img src="images/Ellipse-2.svg" alt="dot" class="mr-2">{{ item }}
+                                </li>
+                            </ul>
+                        </div>
 
-    <div class="col-6">
-        <h4 class="line-header">Cycle</h4>
-        <ul class="dotted-list list-unstyled">
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Spring</li>
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Fall</li>
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Winter</li>
-        </ul>
-    </div>
+                        <div class="col-6">
+                            <h4 class="line-header">Cycle</h4>
+                            <ul class="dotted-list list-unstyled">
+                                <li v-for="item in currentProduct.cycle" :key="item">
+                                    <img src="images/Ellipse-2.svg" alt="dot" class="mr-2">{{ item }}
+                                </li>
+                            </ul>
+                        </div>
 
-    <div class="col-6">
-        <h4 class="line-header">Fruit</h4>
-        <ul class="dotted-list list-unstyled">
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Long shelf life on plant and post harvest.</li>
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Nice shiny attractive deep red color.</li>
-            <li><img src="images/Ellipse-2.svg" alt="dot" class="mr-2">Average fruit size: 140 – 160 grams.</li>
-        </ul>
-    </div>
+                        <div class="col-6">
+                            <h4 class="line-header">Fruit</h4>
+                            <ul class="dotted-list list-unstyled">
+                                <li v-for="item in currentProduct.fruit" :key="item">
+                                    <img src="images/Ellipse-2.svg" alt="dot" class="mr-2">{{ item }}
+                                </li>
+                            </ul>
+                        </div>
 
-    <div class="col-6">
-        <h4 class="line-header">Color</h4>
-        <p class="color-text">Red</p>
-    </div>
-</div>
+                        <div class="col-6">
+                            <h4 class="line-header">Color</h4>
+                            <p class="color-text">{{ currentProduct.color }}</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-5 image-side">
-                    <div class="main-photo-container">
-                        <img src="images/t3.png" alt="Tomato TAG 1002" class="product-main-img">
-                    </div>
-                    <div class="pdf-wrapper">
-                        <a href="#">
-                            <img src="images/Btn-download-pdf.png" alt="Download PDF" class="pdf-btn-xl">
-                        </a>
-                    </div>
-                </div>
+    <div class="main-photo-container">
+        <img :src="currentProduct.image" :alt="currentProduct.title" class="product-main-img">
+    </div>
+    
+    <div class="pdf-wrapper mt-3">
+        <a href="#" 
+           class="btn btn-success btn-block mb-2" 
+           @click.prevent="addToCart(currentProduct.id)" 
+           v-if="btnVisible == 0">
+           Add to cart
+        </a>
+
+        <a href="contact-us.html"
+           class="btn btn-primary btn-block mb-2" 
+           v-if="btnVisible == 1">
+           Go to cart
+        </a>
+    </div>
+</div>
             </div>
+        </div>
+        
+        <div class="container main-container text-center py-5" v-else>
+            <h2>Product not found. Please select a pepper from the catalog.</h2>
+            <a href="tomato.html" class="btn btn-danger mt-3">Go to Catalog</a>
         </div>
     </main>
 
