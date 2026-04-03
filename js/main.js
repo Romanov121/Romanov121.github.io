@@ -69,13 +69,27 @@ var app = new Vue({
             }
         ],
         currentProduct: null,
-        btnVisible: 0        
+        btnVisible: 0,
+        
+        cart: [],
+        contactFields: { 
+            name: '',
+            company: '',
+            position: '',
+            city: '',
+            country: '',
+            phone: '',
+            email: '',
+            role: 'seed producer',
+            otherRole: '',
+            interest: '',
+            captcha: ''
+        },
+        orderSubmitted: false 
     },
     methods: {
-
         getProduct: function() {
             var hashId = window.location.hash.replace('#', '');
-            
             if (hashId) {
                 for (var i = 0; i < this.products.length; i++) {
                     if (this.products[i].id == hashId) {
@@ -91,7 +105,6 @@ var app = new Vue({
             if (localStorage.getItem('cart')) {
                 cart = localStorage.getItem('cart').split(',');
             }
-            
             if (cart.indexOf(String(id)) === -1) {
                 cart.push(id);
                 localStorage.setItem('cart', cart.join(','));
@@ -106,10 +119,47 @@ var app = new Vue({
                     this.btnVisible = 1;
                 }
             }
+        },
+
+        //ФУНКЦІЯ ОТРИМАННЯ КОШИКА
+        getCart: function() {
+            this.cart = [];
+            if (localStorage.getItem('cart')) {
+                var localCartIds = localStorage.getItem('cart').split(',');
+                for (var i = 0; i < localCartIds.length; i++) {
+                    for (var j = 0; j < this.products.length; j++) {
+                        if (this.products[j].id == localCartIds[i]) {
+                            this.cart.push(this.products[j]); 
+                            break;
+                        }
+                    }
+                }
+            }
+        },
+
+        //ФУНКЦІЯ ВИДАЛЕННЯ З КОШИКА
+        removeFromCart: function(id) {
+            this.cart = this.cart.filter(item => item.id != id);
+            
+            //Оновлюємо localStorage
+            var cartIds = this.cart.map(item => item.id);
+            if (cartIds.length > 0) {
+                localStorage.setItem('cart', cartIds.join(','));
+            } else {
+                localStorage.removeItem('cart');
+            }
+        },
+
+        //ФУНКЦІЯ ВІДПРАВКИ ЗАМОВЛЕННЯ
+        makeOrder: function() {
+            this.orderSubmitted = true; 
+            this.cart = [];         
+            localStorage.removeItem('cart'); 
         }
     },
     mounted: function() {
         this.getProduct();
         this.checkInCart();
+        this.getCart(); 
     }
 });
